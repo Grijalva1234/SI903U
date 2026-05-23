@@ -13,13 +13,13 @@ const SEED_USERS = [
 ];
 
 const SEED_SPACES = [
-  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl: 'https://picsum.photos/600/400' },
-  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'.https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200' },
-  { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'./Imagenes/LaboratorioSimulacion.jpg' },
-  { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'./Imagenes/SalaPabellones.jpg' },
-  { id:'s5', name:'Cubículo 302 - Pabellón Q',         faculty:'FIM',  type:'Cubículo',    capacity:6,  features:['Pizarra','Enchufes'],                           imageUrl:'./Imagenes/SalaPabellones.jpg' },
-  { id:'s6', name:'Laboratorio de Redes R1',           faculty:'FIEE', type:'Laboratorio', capacity:25, features:['Equipos Cisco','Proyector','PCs'],              imageUrl:'./Imagenes/LaboratorioRedes.jpg' },
-  { id:'s7', name:'Sala de Asesorías Académicas',      faculty:'FIIS', type:'Aula',        capacity:8,  features:['Pizarra','Proyector','Pantalla TV'],            imageUrl:'./Imagenes/SalaAsesoría.jpg' }
+  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl:'Imagenes/BibliotecaCentral.JPG' },
+  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'Imagenes/BibliotecaCentral.JPG' },
+  { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'Imagenes/LaboratorioSimulacion.jpg' },
+  { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'Imagenes/SalaPabellones.jpg' },
+  { id:'s5', name:'Cubículo 302 - Pabellón Q',         faculty:'FIM',  type:'Cubículo',    capacity:6,  features:['Pizarra','Enchufes'],                           imageUrl:'Imagenes/SalaPabellones.jpg' },
+  { id:'s6', name:'Laboratorio de Redes R1',           faculty:'FIEE', type:'Laboratorio', capacity:25, features:['Equipos Cisco','Proyector','PCs'],              imageUrl:'Imagenes/LaboratorioRedes.jpg' },
+  { id:'s7', name:'Sala de Asesorías Académicas',      faculty:'FIIS', type:'Aula',        capacity:8,  features:['Pizarra','Proyector','Pantalla TV'],            imageUrl:'Imagenes/SalaAsesoría.jpg' }
 ];
 
 function todayStr(offset = 0) {
@@ -503,8 +503,7 @@ function renderCards() {
     const stats   = store.spaceStats(s.id);
     const busy    = occupied.has(s.id);
     const stars   = Array.from({length:5}, (_,i) => `<i data-lucide="star" ${i < Math.round(stats.avg) ? 'style="fill:var(--color-gold);color:var(--color-gold);"' : ''}></i>`).join('');
-    const isImg   = const hasImg = s.imageUrl && ( s.imageUrl.includes('Imagenes/') || s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('http://') || s.imageUrl.startsWith('https://')
-);
+    const isImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/'));
     const imgHtml = isImg
       ? `<img src="${s.imageUrl}" alt="${s.name}" class="space-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
          <span class="img-fallback-icon" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;"><i data-lucide="building-2" style="width:60px;height:60px;"></i></span>`
@@ -883,7 +882,7 @@ function renderAdminTable() {
 // CRUD AMBIENTES
 // ============================================================
 function spaceFormHtml(s = {}) {
-  const hasImg = s.imageUrl && (s.imageUrl.includes('Imagenes/') || s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('http://') || s.imageUrl.startsWith('https://'));
+  const hasImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/'));
   const previewHtml = hasImg
     ? `<div style="margin-top:8px;border-radius:8px;overflow:hidden;max-height:120px;border:1.5px solid var(--color-gray-border);">
          <img src="${s.imageUrl}" alt="Vista previa" style="width:100%;max-height:120px;object-fit:cover;" onerror="this.parentElement.style.display='none'">
