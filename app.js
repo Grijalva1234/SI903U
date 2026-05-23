@@ -178,6 +178,17 @@ function router() {
 
 window.addEventListener('hashchange', router);
 
+function navigateTo(route) {
+  const nextHash = '#' + route;
+  if (window.location.hash === nextHash) {
+    router();
+  } else {
+    window.location.hash = nextHash;
+  }
+}
+
+window.navigateTo = navigateTo;
+
 // ============================================================
 // ARRANQUE DE LA APP
 // ============================================================
@@ -224,6 +235,11 @@ function updateNav() {
   if (hash === 'bookings') navBook.classList.add('active');
   if (hash === 'admin')    navAdmin.classList.add('active');
   if (hash === 'reports')  navReports.classList.add('active');
+
+  navExplore.onclick = (e) => { e.preventDefault(); navigateTo('explore'); };
+  navBook.onclick    = (e) => { e.preventDefault(); navigateTo('bookings'); };
+  navAdmin.onclick   = (e) => { e.preventDefault(); navigateTo('admin'); };
+  navReports.onclick = (e) => { e.preventDefault(); navigateTo('reports'); };
 
   document.getElementById('logout-btn').onclick = () => {
     store.logout();
