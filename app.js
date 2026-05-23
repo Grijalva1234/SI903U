@@ -13,8 +13,8 @@ const SEED_USERS = [
 ];
 
 const SEED_SPACES = [
-  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl:'Imagenes/BibliotecaCentral.JPG' },
-  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'Imagenes/BibliotecaCentral.JPG' },
+  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'BC', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl:'Imagenes/BibliotecaCentral.JPG' },
+  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'BC', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'Imagenes/BibliotecaCentral.JPG' },
   { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'Imagenes/LaboratorioSimulacion.jpg' },
   { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'Imagenes/SalaPabellones.jpg' },
   { id:'s5', name:'Cubículo 302 - Pabellón Q',         faculty:'FIM',  type:'Cubículo',    capacity:6,  features:['Pizarra','Enchufes'],                           imageUrl:'Imagenes/SalaPabellones.jpg' },
@@ -466,6 +466,7 @@ function renderExplore() {
       </div>
       <div class="filter-tags">
         <span class="filter-tag active" data-fac="">Todas</span>
+        <span class="filter-tag" data-fac="BC">BC</span>
         <span class="filter-tag" data-fac="FIIS">FIIS</span>
         <span class="filter-tag" data-fac="FIM">FIM</span>
         <span class="filter-tag" data-fac="FIC">FIC</span>
@@ -914,7 +915,7 @@ function spaceFormHtml(s = {}) {
       <div class="form-group">
         <label class="form-label">Facultad</label>
         <select id="cf-faculty" class="filter-select" style="width:100%;">
-          ${['FIIS','FIM','FIC','FIEE','FC'].map(f => `<option value="${f}" ${s.faculty===f?'selected':''}>${f}</option>`).join('')}
+          ${['BC','FIIS','FIM','FIC','FIEE','FC'].map(f => `<option value="${f}" ${s.faculty===f?'selected':''}>${f}</option>`).join('')}
         </select>
       </div>
       <div class="form-group">
