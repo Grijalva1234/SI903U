@@ -1,16 +1,11 @@
-from flask import Flask, send_from_directory
+import streamlit as st
+from pathlib import Path
 
-app = Flask(__name__, static_folder='.')
+st.set_page_config(layout="wide")
 
-# Ruta principal -> index.html
-@app.route('/')
-def home():
-    return send_from_directory('.', 'index.html')
+html_file = Path("index.html")
 
-# Servir archivos estáticos (css, js, imágenes)
-@app.route('/<path:path>')
-def static_files(path):
-    return send_from_directory('.', path)
+with open(html_file, "r", encoding="utf-8") as f:
+    html_content = f.read()
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+st.components.v1.html(html_content, height=900, scrolling=True)
