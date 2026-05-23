@@ -503,7 +503,7 @@ function renderCards() {
     const stats   = store.spaceStats(s.id);
     const busy    = occupied.has(s.id);
     const stars   = Array.from({length:5}, (_,i) => `<i data-lucide="star" ${i < Math.round(stats.avg) ? 'style="fill:var(--color-gold);color:var(--color-gold);"' : ''}></i>`).join('');
-    const isImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/'));
+    const isImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/') || s.imageUrl.startsWith('Imagenes/'));
     const imgHtml = isImg
       ? `<img src="${s.imageUrl}" alt="${s.name}" class="space-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
          <span class="img-fallback-icon" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;"><i data-lucide="building-2" style="width:60px;height:60px;"></i></span>`
@@ -882,7 +882,7 @@ function renderAdminTable() {
 // CRUD AMBIENTES
 // ============================================================
 function spaceFormHtml(s = {}) {
-  const hasImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/'));
+  const hasImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/') || s.imageUrl.startsWith('./Imagenes/'));
   const previewHtml = hasImg
     ? `<div style="margin-top:8px;border-radius:8px;overflow:hidden;max-height:120px;border:1.5px solid var(--color-gray-border);">
          <img src="${s.imageUrl}" alt="Vista previa" style="width:100%;max-height:120px;object-fit:cover;" onerror="this.parentElement.style.display='none'">
