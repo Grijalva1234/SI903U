@@ -13,13 +13,13 @@ const SEED_USERS = [
 ];
 
 const SEED_SPACES = [
-  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl:'Imagenes/BibliotecaCentral.JPG' },
-  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'Imagenes/BibliotecaCentral.JPG' },
-  { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'Imagenes/LaboratorioSimulacion.jpg' },
-  { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'Imagenes/SalaPabellones.jpg' },
-  { id:'s5', name:'Cubículo 302 - Pabellón Q',         faculty:'FIM',  type:'Cubículo',    capacity:6,  features:['Pizarra','Enchufes'],                           imageUrl:'Imagenes/SalaPabellones.jpg' },
-  { id:'s6', name:'Laboratorio de Redes R1',           faculty:'FIEE', type:'Laboratorio', capacity:25, features:['Equipos Cisco','Proyector','PCs'],              imageUrl:'Imagenes/LaboratorioRedes.jpg' },
-  { id:'s7', name:'Sala de Asesorías Académicas',      faculty:'FIIS', type:'Aula',        capacity:8,  features:['Pizarra','Proyector','Pantalla TV'],            imageUrl:'Imagenes/SalaAsesoría.jpg' }
+  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl:'./Imagenes/BibliotecaCentral.JPG' },
+  { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'./Imagenes/BibliotecaCentral.JPG' },
+  { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'./Imagenes/LaboratorioSimulacion.jpg' },
+  { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'./Imagenes/SalaPabellones.jpg' },
+  { id:'s5', name:'Cubículo 302 - Pabellón Q',         faculty:'FIM',  type:'Cubículo',    capacity:6,  features:['Pizarra','Enchufes'],                           imageUrl:'./Imagenes/SalaPabellones.jpg' },
+  { id:'s6', name:'Laboratorio de Redes R1',           faculty:'FIEE', type:'Laboratorio', capacity:25, features:['Equipos Cisco','Proyector','PCs'],              imageUrl:'./Imagenes/LaboratorioRedes.jpg' },
+  { id:'s7', name:'Sala de Asesorías Académicas',      faculty:'FIIS', type:'Aula',        capacity:8,  features:['Pizarra','Proyector','Pantalla TV'],            imageUrl:'./Imagenes/SalaAsesoría.jpg' }
 ];
 
 function todayStr(offset = 0) {
