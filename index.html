@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SRE UNI - Sistema de Reserva de Ambientes de Estudio de la Universidad Nacional de Ingeniería.">
+  <title>SRE UNI | Sistema de Reserva de Ambientes</title>
+
+  <!-- Fuente Inter de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons (CDN local-compatible) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ====================================================
+       HEADER / NAVBAR
+  ==================================================== -->
+  <header class="main-header hidden" id="main-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="#explore" class="header-logo">
+        <div class="logo-circle"><i data-lucide="graduation-cap"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">SRE <span>UNI</span></span>
+          <span class="logo-sub">Ambientes de Estudio</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#explore"  class="nav-link" id="nav-explore">
+          <i data-lucide="search"></i> Explorar
+        </a>
+        <a href="#bookings" class="nav-link" id="nav-bookings">
+          <i data-lucide="calendar"></i> Mis Reservas
+        </a>
+        <a href="#admin"    class="nav-link" id="nav-admin">
+          <i data-lucide="shield"></i> Administrar
+        </a>
+        <a href="#reports"  class="nav-link" id="nav-reports">
+          <i data-lucide="bar-chart-3"></i> Reportes
+        </a>
+      </nav>
+
+      <!-- User info + logout -->
+      <div class="header-right">
+        <div class="user-info-badge">
+          <div class="user-avatar" id="user-avatar">E</div>
+          <div class="user-info-text">
+            <span class="user-name" id="header-user-name">Hola Usuario</span>
+            <span class="user-role" id="header-user-role">Estudiante UNI</span>
+          </div>
+        </div>
+        <button class="logout-btn" id="logout-btn" title="Cerrar sesión">
+          <i data-lucide="log-out"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" title="Menú">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================
+       CONTENIDO PRINCIPAL
+  ==================================================== -->
+  <main id="app" class="main-container">
+    <!-- Las vistas se inyectan aquí -->
+  </main>
+
+  <!-- ====================================================
+       MODAL GLOBAL (corregido: sin clase hidden inicial — se controla por JS)
+  ==================================================== -->
+  <div class="modal-overlay hidden" id="global-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Título</h2>
+        <button class="modal-close-btn" onclick="closeModal()" title="Cerrar modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Contenido dinámico aquí -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       CONTENEDOR DE TOASTS
+  ==================================================== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- App JS (sin type="module" para compatibilidad file://) -->
+  <script src="app.js"></script>
+</body>
+</html>
