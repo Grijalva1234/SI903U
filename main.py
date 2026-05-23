@@ -1,80 +1,74 @@
 import streamlit as st
 from pathlib import Path
 import streamlit.components.v1 as components
+import base64
 
-# Configuración de página
 st.set_page_config(
-    page_title="SRE UNI | Sistema de Reserva de Ambientes",
+    page_title="SRE UNI",
     page_icon="🎓",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
-# Ocultar menú de streamlit (opcional)
+# Ocultar UI de streamlit
 st.markdown("""
 <style>
 #MainMenu {visibility:hidden;}
 footer {visibility:hidden;}
 header {visibility:hidden;}
-.block-container {
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding-left: 0rem;
-    padding-right: 0rem;
-    max-width: 100%;
+
+.block-container{
+    padding:0rem !important;
+    margin:0rem !important;
+    max-width:100% !important;
 }
+
 iframe {
-    border: none !important;
+    width:100% !important;
+    border:none !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# Ruta base del proyecto
 BASE_DIR = Path(__file__).parent
 
 # Leer archivos
-html_path = BASE_DIR / "index.html"
-css_path = BASE_DIR / "style.css"
-js_path = BASE_DIR / "app.js"
+html = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+css = (BASE_DIR / "style.css").read_text(encoding="utf-8")
+js = (BASE_DIR / "app.js").read_text(encoding="utf-8")
 
-# Verificar existencia
-if not html_path.exists():
-    st.error("No se encontró index.html")
-    st.stop()
-
-if not css_path.exists():
-    st.error("No se encontró style.css")
-    st.stop()
-
-if not js_path.exists():
-    st.error("No se encontró app.js")
-    st.stop()
-
-# Leer contenido
-html_content = html_path.read_text(encoding="utf-8")
-css_content = css_path.read_text(encoding="utf-8")
-js_content = js_path.read_text(encoding="utf-8")
-
-# Inyectar CSS y JS dentro del HTML
-html_content = html_content.replace(
+# Inyectar CSS
+html = html.replace(
     '<link rel="stylesheet" href="style.css">',
-    f"<style>{css_content}</style>"
+    f"<style>{css}</style>"
 )
 
-html_content = html_content.replace(
+# Inyectar JS
+html = html.replace(
     '<script src="app.js"></script>',
-    f"<script>{js_content}</script>"
+    f"<script>{js}</script>"
 )
 
-# Mantener CDN de Lucide y Google Fonts
-# Fix de imágenes para Streamlit Cloud
-html_content = html_content.replace(
-    'src="Imagenes/',
-    'src="./Imagenes/'
-)
+# Fix de imágenes
+imagenes_path = BASE_DIR / "Imagenes"
 
-# Renderizar app completa
+for img in imagenes_path.iterdir():
+    if img.is_file():
+        with open(img, "rb") as f:
+            encoded = base64.b64encode(f.read()).decode()
+
+        mime = "image/jpeg"
+        if img.suffix.lower() == ".png":
+            mime = "image/png"
+
+        html = html.replace(
+            f'Imagenes/{img.name}',
+            f'data:{mime};base64,{encoded}'
+        )
+
+# Render grande
 components.html(
-    html_content,
-    height=900,
+    html,
+    height=2500,
     scrolling=True
 )
