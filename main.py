@@ -1,11 +1,32 @@
 import streamlit as st
-from pathlib import Path
 
 st.set_page_config(layout="wide")
 
-html_file = Path("index.html")
+# Leer archivos
+with open("index.html", "r", encoding="utf-8") as f:
+    html = f.read()
 
-with open(html_file, "r", encoding="utf-8") as f:
-    html_content = f.read()
+with open("style.css", "r", encoding="utf-8") as f:
+    css = f.read()
 
-st.components.v1.html(html_content, height=900, scrolling=True)
+with open("app.js", "r", encoding="utf-8") as f:
+    js = f.read()
+
+# Insertar CSS antes de </head>
+html = html.replace(
+    "</head>",
+    f"<style>{css}</style></head>"
+)
+
+# Insertar JS antes de </body>
+html = html.replace(
+    "</body>",
+    f"<script>{js}</script></body>"
+)
+
+# Mostrar web
+st.components.v1.html(
+    html,
+    height=1000,
+    scrolling=True
+)
