@@ -505,49 +505,10 @@ function renderCards() {
     const stars   = Array.from({length:5}, (_,i) => `<i data-lucide="star" ${i < Math.round(stats.avg) ? 'style="fill:var(--color-gold);color:var(--color-gold);"' : ''}></i>`).join('');
     const isImg   = s.imageUrl && (s.imageUrl.startsWith('data:image') || s.imageUrl.startsWith('Imagenes/'));
     const imgHtml = isImg
-      ? `
-        <img 
-          src="${s.imageUrl}" 
-          alt="${s.name}"
-          style="
-            width:100%;
-            height:220px;
-            object-fit:cover;
-            display:block;
-            border-radius:12px 12px 0 0;
-          "
-          onerror="
-            console.error('No cargó imagen:', this.src);
-            this.style.display='none';
-            this.nextElementSibling.style.display='flex';
-          "
-        >
-        <div 
-          class="img-fallback-icon" 
-          style="
-            display:none;
-            width:100%;
-            height:220px;
-            align-items:center;
-            justify-content:center;
-            background:#f3f4f6;
-          "
-        >
-          <i data-lucide="building-2" style="width:60px;height:60px;"></i>
-        </div>
-      `
-      : `
-        <div style="
-          width:100%;
-          height:220px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:#f3f4f6;
-        ">
-          <i data-lucide="${s.imageUrl || 'book-open'}" style="width:72px;height:72px;"></i>
-        </div>
-      `;
+      ? `<img src="${s.imageUrl}" alt="${s.name}" class="space-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+         <span class="img-fallback-icon" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;"><i data-lucide="building-2" style="width:60px;height:60px;"></i></span>`
+      : `<i data-lucide="${s.imageUrl || 'book-open'}" style="width:72px;height:72px;"></i>`;
+
     return `<div class="space-card">
       <div class="space-image-box">
         ${imgHtml}
