@@ -1,32 +1,62 @@
 import streamlit as st
+from pathlib import Path
 
-st.set_page_config(layout="wide")
+# Configuración de página
+st.set_page_config(
+    page_title="SRE UNI",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+# Ocultar UI innecesaria de Streamlit
+st.markdown("""
+<style>
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+.block-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+iframe {
+    width: 100% !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # Leer archivos
-with open("index.html", "r", encoding="utf-8") as f:
-    html = f.read()
+html = Path("index.html").read_text(encoding="utf-8")
+css = Path("style.css").read_text(encoding="utf-8")
+js = Path("app.js").read_text(encoding="utf-8")
 
-with open("style.css", "r", encoding="utf-8") as f:
-    css = f.read()
+# Eliminar referencias externas del HTML
+html = html.replace(
+    '<link rel="stylesheet" href="style.css">',
+    ''
+)
 
-with open("app.js", "r", encoding="utf-8") as f:
-    js = f.read()
+html = html.replace(
+    '<script src="app.js"></script>',
+    ''
+)
 
-# Insertar CSS antes de </head>
+# Inyectar CSS
 html = html.replace(
     "</head>",
     f"<style>{css}</style></head>"
 )
 
-# Insertar JS antes de </body>
+# Inyectar JS
 html = html.replace(
     "</body>",
     f"<script>{js}</script></body>"
 )
 
-# Mostrar web
+# Renderizar app
 st.components.v1.html(
     html,
-    height=1000,
+    height=1200,
     scrolling=True
 )
