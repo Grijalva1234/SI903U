@@ -13,7 +13,7 @@ const SEED_USERS = [
 ];
 
 const SEED_SPACES = [
-  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl: './Imagenes/BibliotecaCentral.JPG' },
+  { id:'s1', name:'Cubículo 101 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV','Aire Acondicionado'], imageUrl: 'https://picsum.photos/600/400' },
   { id:'s2', name:'Cubículo 102 - Biblioteca Central', faculty:'FIIS', type:'Cubículo',    capacity:4,  features:['Pizarra','Pantalla TV'],                      imageUrl:'./Imagenes/BibliotecaCentral.JPG' },
   { id:'s3', name:'Laboratorio de Simulación L3',      faculty:'FIIS', type:'Laboratorio', capacity:15, features:['PCs de alta gama','Proyector','Pizarra'],       imageUrl:'./Imagenes/LaboratorioSimulacion.jpg' },
   { id:'s4', name:'Aula de Estudio A4 - Pabellón V',   faculty:'FIC',  type:'Aula',        capacity:20, features:['Pizarra','Proyector'],                          imageUrl:'./Imagenes/SalaPabellones.jpg' },
